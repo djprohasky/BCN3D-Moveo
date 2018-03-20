@@ -22,9 +22,7 @@ Stepper myStepper4(stepsPerRevolution, A2, A3);
 String cs;
 
 // initialise haptics
-int pressure = 0;
-int pressure_pin = A7;
-
+int pressure0 = 0, pressure1 = 0;
 
 void setup() {
 
@@ -100,13 +98,16 @@ void loop() {
 
 
 void CLAW_pressure(){
-  pressure = analogRead(pressure_pin);
-  Serial.print("pressure: ");
-  Serial.print(pressure);
-  if(pressure < 375){
+  pressure0 = analogRead(A7);
+  Serial.print("pressure0: ");
+  Serial.print(pressure0);
+  pressure1 = analogRead(A6);
+  Serial.print("\t pressure1: ");
+  Serial.print(pressure1);
+  if(pressure0 < 380 && pressure1 < 580){
     Serial.println(" fully engaged");
   } 
-  else if (pressure < 400){
+  else if (pressure0 < 400 && pressure1 < 600){
     Serial.println(" partially engaged");
   } 
   else Serial.println(" disengaged");
@@ -200,6 +201,7 @@ void CCW(int ID) {
     break;
   }
 }
+
 
 
 

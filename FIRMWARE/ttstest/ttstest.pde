@@ -24,6 +24,8 @@ void mousePressed() {
   tts.setPitch(150);
   tts.setPitchRange(10);
   tts.speak("stick?");
+  delay(1000);
+  tts.speak("How did I do?");
   //tts.speakLeft("Hello from the left");
   //tts.speakRight("Hello from the Right");
 }
