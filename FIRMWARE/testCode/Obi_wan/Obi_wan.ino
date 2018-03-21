@@ -33,7 +33,7 @@ void setup() {
   myServo1.attach(9);
 
   // set the speed at 60 rpm:
-  myStepper0.setSpeed(rpm);
+  myStepper0.setSpeed(rpm /2);
   myStepper1.setSpeed(rpm * 14);
   myStepper2.setSpeed(rpm * 14);
   myStepper3.setSpeed(rpm * 14 / 5);
@@ -82,11 +82,14 @@ void loop() {
         case '9':
           CCW(4);
           break;
-        case 'a':
+        case 's':
           CLAW(1);
           break;
-        case 's':
+        case 'z':
           CLAW(0);
+          break;
+        case 'w':
+          CLAW_wc(1);
           break;
         case 'n':
           res = 1;
@@ -133,6 +136,23 @@ void CLAW(boolean isClose) {
   }
 }
 
+
+void CLAW_wc(boolean isClose) {
+  if (isClose) {
+    for (int pos = 20; pos <= 115; pos++) {
+      myServo0.write(pos);
+      myServo1.write(pos);
+      delay(15);
+    }
+  }
+  else {
+    for (int pos = 100; pos >= 20; pos--) {
+      myServo0.write(pos);
+      myServo1.write(pos);
+      delay(15);
+    }
+  }
+}
 
 void CW(int ID) {
   // step one revolution  in one direction:
