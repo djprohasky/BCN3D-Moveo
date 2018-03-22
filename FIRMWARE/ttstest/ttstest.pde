@@ -28,4 +28,8 @@ void mousePressed() {
   tts.speak("How did I do?");
   //tts.speakLeft("Hello from the left");
   //tts.speakRight("Hello from the Right");
+  delay(2000);
+  tts.speak("Sorry I AM NEW TO THIS SPEAKING THING, BUT I THINK I LOVE YOU?");
+  delay(2500);
+  tts.speak("TOO SOON?");
 }
