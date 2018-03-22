@@ -33,7 +33,7 @@ void setup() {
   myServo1.attach(9);
 
   // set the speed at 60 rpm:
-  myStepper0.setSpeed(rpm /2);
+  myStepper0.setSpeed(rpm / 2);
   myStepper1.setSpeed(rpm * 14);
   myStepper2.setSpeed(rpm * 14);
   myStepper3.setSpeed(rpm * 14 / 5);
@@ -92,7 +92,7 @@ void loop() {
           CLAW_wc(1);
           break;
         case 'n':
-          res = 1;
+          res = .25;
           break;
         case 'h':
           res = .1;
@@ -166,8 +166,10 @@ void CW(int ID) {
       break;
     case 1:
       Serial.println("J1");
-      for (int i = 0; i < stepsPerRevolution * res; i++) {
-        myStepper1.step(1);
+      for (int j = 0; j < 14; j++) {
+        for (int i = 0; i < stepsPerRevolution * res; i++) {
+          myStepper1.step(1);
+        }
       }
       break;
     case 2:
@@ -191,8 +193,10 @@ void CW(int ID) {
       break;
     case 3:
       Serial.println("J3");
-      for (int i = 0; i < stepsPerRevolution * res; i++) {
-        myStepper3.step(1);
+      for (int j = 0; j < 14 / 5; j++) {
+        for (int i = 0; i < stepsPerRevolution * res; i++) {
+          myStepper3.step(1);
+        }
       }
       break;
     case 4:
@@ -217,8 +221,10 @@ void CCW(int ID) {
       break;
     case 1:
       Serial.println("J1");
-      for (int i = 0; i < stepsPerRevolution * res; i++) {
-        myStepper1.step(-1);
+      for (int j = 0; j < 14; j++) {
+        for (int i = 0; i < stepsPerRevolution * res; i++) {
+          myStepper1.step(-1);
+        }
       }
       break;
     case 2:
@@ -242,8 +248,10 @@ void CCW(int ID) {
       break;
     case 3:
       Serial.println("J3");
-      for (int i = 0; i < stepsPerRevolution * res; i++) {
-        myStepper3.step(-1);
+      for (int j = 0; j < 14/5; j++) {
+        for (int i = 0; i < stepsPerRevolution * res; i++) {
+          myStepper3.step(-1);
+        }
       }
       break;
     case 4:
